@@ -1,1 +1,1 @@
-# petclinic
+PetClinic Sample Application
