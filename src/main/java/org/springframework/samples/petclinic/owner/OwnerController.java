@@ -15,11 +15,8 @@
  */
 package org.springframework.samples.petclinic.owner;
 
-import com.baomidou.dynamic.datasource.annotation.DS;
-import com.baomidou.dynamic.datasource.annotation.DSTransactional;
 import org.springframework.samples.petclinic.visit.VisitRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -66,7 +63,6 @@ class OwnerController {
 	}
 
 	@PostMapping("/owners/new")
-	@DSTransactional
 	public String processCreationForm(@Valid Owner owner, BindingResult result) {
 		if (result.hasErrors()) {
 			return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
@@ -84,7 +80,6 @@ class OwnerController {
 	}
 
 	@GetMapping("/owners")
-	@DS("slave")
 	public String processFindForm(Owner owner, BindingResult result, Map<String, Object> model) {
 
 		// allow parameterless GET request for /owners to return all records
